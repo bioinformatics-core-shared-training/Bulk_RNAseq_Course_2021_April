@@ -106,7 +106,7 @@ QC](Markdowns/02_FastQC_introduction.html)  - Zeynep Kalender Atak
     <!-- - [Practical solutions](Markdowns/02_FastQC_practical.Solutions.html) ([pdf](Markdowns/02_FastQC_practical.Solutions.pdf)) -->
 
 11:15 - 12:45 [Short read alignment with 
-HISAT2](Markdowns/03_Alignment_with_HISAT2_introduction.html) - Jon Price
+HISAT2](Markdowns/03_Alignment_with_HISAT2_introduction.html) - Jon Price  
     - [Practical](Markdowns/03_Alignment_with_HISAT2_practical.html)  ([pdf](Markdowns/03_Alignment_with_HISAT2_practical.pdf))    
     <!-- - [Practical solutions](Markdowns/03_Alignment_with_HISAT2_practical.Solutions.html) ([pdf](Markdowns/03_Alignment_with_HISAT2_practical.Solutions.pdf)) -->
 
@@ -143,7 +143,6 @@ Couturier
 
 9:30 - 12:15 - [Differential Expression for RNA-seq](Markdowns/10_DE_analysis_with_DESeq2.html) ([pdf](Markdowns/10_DE_analysis_with_DESeq2.pdf)) - Chandra Chilamakuri   
    - [practical solutions](Markdowns/10_DE_analysis_with_DESeq2.Solutions.html) ([pdf](Markdowns/10_DE_analysis_with_DESeq2.Solutions.html))
-   - [Live script](live_scripts/DESeq2_session_script.R)
  
 12:15 - 13:15 Lunch
 
