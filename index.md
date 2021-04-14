@@ -135,7 +135,7 @@ Pre-processing](Markdowns/07_Data_Exploration.html) ([pdf](Markdowns/07_Data_Exp
 Couturier        
     - [Practical (html)](Markdowns/StatsRNAseq_Couturier.html) [(rmd)](Markdowns/StatsRNAseq_Couturier.Rmd)  
 
-15:30 - 17:00 [Experimental Design of Bulk RNAseq studies](additional_scripts/ExperimentalDesignCourse_Edwards_23-03-2021.pptx) - Abbi Edwards    
+15:45 - 17:00 [Experimental Design of Bulk RNAseq studies](additional_scripts/ExperimentalDesignCourse_Edwards_23-03-2021.pptx) - Abbi Edwards    
     - [Practical](additional_scripts/RNAseq_ExperimentalDesignPractical.pdf)    
     <!-- - [Answers](additional_scripts/RNAseq_ExperimentalDesignPractical_Answers.pdf) -->
 
