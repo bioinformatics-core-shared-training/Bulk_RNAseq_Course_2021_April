@@ -173,12 +173,16 @@ After the options there are three arguments.
 The first required argument is the name of the hisat file index, which should
 be preceded by the `-x` flag:
 
-    `-x <ht2-idx>`
+```
+x <ht2-idx>
+```
 
 The usage tells us that the *"filename prefix"* should be provided, that is the
 filename without the `.X.ht2` suffix:
 
-    `<ht2-idx>  Index filename prefix (minus trailing .X.ht2).`
+```
+<ht2-idx>  Index filename prefix (minus trailing .X.ht2)
+```
     
 The chromosome 1 index that we created in Exercise 1 had 8 files:
 
