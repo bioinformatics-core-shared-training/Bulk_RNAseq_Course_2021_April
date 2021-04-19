@@ -172,6 +172,7 @@ pre code {
 <div id="checking-the-quality-of-the-aligned-data" class="section level1">
 <h1>Checking the quality of the aligned data</h1>
 <p>Once we have aligned our reads, it is then possible to run some additional quality checks on our data. In the first instance we will just look at some basic metrics such as the percentage of aligned reads and the duplication rates. We can then use some more sophisticated methods to assess the integrity of our RNA and genomic locations to which our reads are aligning.</p>
+<p>For the purposes of this training session we will work with a bam files that only contains reads aligned to chromosome 14. Running each tool on the full bam file would take too long for the practical. You should find a file called <code>SRR7657883.chr14.sorted.bam</code> under the directory <code>bam</code>, please use this rather than the bam file you created in the previous session.</p>
 <div id="a-quick-look-at-the-alignment-metrics-with-samtools" class="section level2">
 <h2>1. A quick look at the alignment metrics with <code>samtools</code></h2>
 <p>We previously used the <code>samtools</code> package to sort and index our bam file. <code>samtools</code> also includes some simple tools to generate alignment metrics. This can be very handy for a quick first look at our alignment quality. The tool we are going to use is called <code>flagstat</code>.</p>
@@ -182,7 +183,7 @@ pre code {
 <h3>Exercise 1</h3>
 <blockquote>
 <ol style="list-style-type: decimal">
-<li>Use the <code>samtools flagstat</code> command to generate alignment metrics for the sorted bam file you created in the previous practical.</li>
+<li>Use the <code>samtools flagstat</code> command to generate alignment metrics for the bam file <code>bam/SRR7657883.chr14.sorted.bam</code>.</li>
 </ol>
 <ol start="17" style="list-style-type: upper-alpha">
 <li>What percentage of the reads have aligned to the genome?</li>
@@ -207,7 +208,6 @@ pre code {
 <p>The first tool we are going to use is <code>MarkDuplicates</code>. This tool actually performs two tasks.</p>
 <p>First, Picard reads through the bam file and finds any duplicate reads - these are reads with the same 5’ position. For each group of duplicate reads, Picard selects a “primary” read based on the base quality scores and then marks all other reads in the group as “duplicates” by adding <strong>1024</strong> to the sam flag. For paired end reads, the entire fragment is considered, this essentially means both ends must be duplicated for the read pair to be marked as a duplicate.</p>
 <p>Once the duplicate reads are marked, Picard then also generates a metrics file that contains information about the duplication rate.</p>
-<p>For the purposes of this training session we will work with a bam files that only contains reads aligned to chromosome 14. Running each tool on the full bam file would take too long for the practical. You should find afile called <code>SRR7657883.chr14.sorted.bam</code> under the directory <code>bam</code>, please use this rather than the bam file you created in the previous session.</p>
 </div>
 <div id="exercise-2.1" class="section level3">
 <h3>Exercise 2.1</h3>

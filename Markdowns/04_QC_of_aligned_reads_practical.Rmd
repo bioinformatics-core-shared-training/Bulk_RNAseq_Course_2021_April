@@ -14,6 +14,12 @@ basic metrics such as the percentage of aligned reads and the duplication
 rates. We can then use some more sophisticated methods to assess the integrity
 of our RNA and genomic locations to which our reads are aligning. 
 
+For the purposes of this training session we will work with a bam files that
+only contains reads aligned to chromosome 14. Running each tool on the full bam
+file would take too long for the practical. You should find a file called
+`SRR7657883.chr14.sorted.bam` under the directory `bam`, please use this rather
+than the bam file you created in the previous session.  
+
 ## 1. A quick look at the alignment metrics with `samtools`
 
 We previously used the `samtools` package to sort and index our bam file.
@@ -32,7 +38,7 @@ Where `<in.bam>` is the bam file we wish to QC.
 ### Exercise 1
 
 > 1. Use the `samtools flagstat` command to generate alignment metrics for
->    the sorted bam file you created in the previous practical.
+>    the bam file `bam/SRR7657883.chr14.sorted.bam`.
 > 
 > Q) What percentage of the reads have aligned to the genome?
 
@@ -83,12 +89,6 @@ both ends must be duplicated for the read pair to be marked as a duplicate.
 
 Once the duplicate reads are marked, Picard then also generates a metrics file
 that contains information about the duplication rate.
-
-For the purposes of this training session we will work with a bam files that
-only contains reads aligned to chromosome 14. Running each tool on the full bam
-file would take too long for the practical. You should find afile called
-`SRR7657883.chr14.sorted.bam` under the directory `bam`, please use this rather
-than the bam file you created in the previous session.
 
 ### Exercise 2.1
 
