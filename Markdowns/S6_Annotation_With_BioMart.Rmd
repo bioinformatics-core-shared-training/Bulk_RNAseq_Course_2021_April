@@ -1,8 +1,10 @@
 ---
-title: "RNA-seq Analysis in R"
-subtitle: "Annotation Differential Expression Results with biomaRt"
+title: "Introduction to Bulk RNAseq data analysis"
+subtitle: Annotation Differential Expression Results with biomaRt
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
+  pdf_document:
+    toc: yes
   html_document:
     toc: yes
 layout: page

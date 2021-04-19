@@ -1,5 +1,5 @@
 ---
-title: "RNA-seq analysis in R"
+title: "Introduction to Bulk RNAseq data analysis"
 subtitle: QC of raw reads with FastQC
 output:
   pdf_document: default

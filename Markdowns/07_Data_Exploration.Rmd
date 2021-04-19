@@ -1,7 +1,7 @@
 ---
-title: "RNA-seq analysis in R"
+title: "Introduction to Bulk RNAseq data analysis"
 subtitle: Initial exploration of RNA-seq data
-date: "`r format(Sys.time(), "Last modified: %d %b %Y")`"
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
   pdf_document:
     toc: yes

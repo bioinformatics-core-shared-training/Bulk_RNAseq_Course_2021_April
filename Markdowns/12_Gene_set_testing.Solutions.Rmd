@@ -1,12 +1,12 @@
 ---
-title: "RNA-seq analysis in R"
+title: "Introduction to Bulk RNAseq data analysis"
 subtitle: "Gene Set Testing for RNA-seq - Solutions"
 output:
+  pdf_document:
+    toc: yes  
   html_document:
     toc: yes
     toc_float: yes
-  pdf_document:
-    toc: yes  
 layout: page
 always_allow_html: true
 ---
@@ -53,7 +53,7 @@ pathview(gene.data = logFC,
 
 mmu04659.pathview.png:
 
-![mmu04659 - Th17 cell differentiation](images/mmu04659.pathview.png)
+![mmu04659 - Th17 cell differentiation](images/mmu04659_pathview.png)
 
 ## Exercise 2 - GO term enrichment analysis
 

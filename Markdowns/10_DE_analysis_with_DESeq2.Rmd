@@ -1,11 +1,11 @@
 ---
-title: "RNA-seq analysis in R"
+title: "Introduction to Bulk RNAseq data analysis"
 subtitle: Differential Expression of RNA-seq data
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
-  html_document:
-    toc: yes
   pdf_document:
+    toc: yes
+  html_document:
     toc: yes
 bibliography: ref.bib
 ---

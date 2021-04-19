@@ -1,9 +1,11 @@
 ---
-title: "RNA-Seq Analysis in R"
-subtitle: "Annotation and Visualisation of Differential Expression Results - Solutions"
+title: "Introduction to Bulk RNAseq data analysis"
 author: "Abbi Edwards"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
+subtitle: Annotation and Visualisation of Differential Expression Results - Solutions
 ---
 
 ```{r setup, include=FALSE}

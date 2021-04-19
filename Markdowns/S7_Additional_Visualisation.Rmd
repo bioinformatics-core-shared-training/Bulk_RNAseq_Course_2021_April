@@ -1,5 +1,5 @@
 ---
-title: "RNA-seq Analysis in R"
+title: "Introduction to Bulk RNAseq data analysis"
 subtitle: "Additional Visualisation of RNA-seq results - Supplementary Materials"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:

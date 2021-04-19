@@ -1,5 +1,5 @@
 ---
-title: "RNA-seq analysis in R"
+title: "Introduction to Bulk RNAseq data analysis"
 subtitle: Read alignment with HISAT2 - exercise solutions
 output:
   pdf_document: default
