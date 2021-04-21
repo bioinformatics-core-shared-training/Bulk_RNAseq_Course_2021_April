@@ -3,9 +3,9 @@ title: "Introduction to Bulk RNAseq data analysis"
 subtitle: Initial exploration of RNA-seq data
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
-  pdf_document:
-    toc: yes
   html_document:
+    toc: yes
+  pdf_document:
     toc: yes
 bibliography: ref.bib
 ---
@@ -116,6 +116,21 @@ Save the `txi` object for use in later sessions.
 
 ```{r saveData, eval=FALSE}
 saveRDS(txi, file = "salmon_outputs/txi.rds")
+```
+
+### Exercise 1
+>
+> We have loaded in the raw counts here. These are what we need for the 
+> differential expression analysis. For other investigations we might want 
+> counts normalised to library size. `tximport` allows us to import 
+> "transcript per million" (TPM) scaled counts instead.
+>
+> 1. Create a new object called `tpm` that contains length scaled TPM 
+>    counts. You will need to add an extra argument to the command. Use the help
+>    page to determine how you need to change the code: `?tximport`.
+
+```{r solutionExercise1}
+
 ```
 
 ### A quick intro to `dplyr`
@@ -289,14 +304,14 @@ plot(rowMeans(vst_counts), rowSds(vst_counts),
      main='VST counts: sd vs mean')
 ```
 
-> ### Challenge 1
+### Exercise 2
 >
 > 1. Use the `DESeq2` function `rlog` to transform the count data. This function
 > also normalises for library size.
 > 2. Plot the count distribution boxplots with this data  
 >    How has this affected the count distributions?
 
-```{r solutionChallenge1}
+```{r solutionExercise2}
 
 ```
 
@@ -348,9 +363,24 @@ autoplot(pcDat,
          size=5)
 ```
 
-> ### Discussion
+### Exercise 3
+>
+> The plot we have generated shows us the first two principle components. This
+> shows us the relationship between the samples according to the two greatest
+> sources of variation. Sometime, particularly with more complex experiments 
+> with more than two experimental factors, or where there might be confounding
+> factors, it is helpful to look at more principle components.
+>
+> 1. Redraw the plot, but this time plot the 2nd principle component on the 
+> x-axis and the 3rd prinicple component on the y axis. To find out how to do
+> the consult the help page for the `prcomp` data method for `autoplot`: 
+> `autoplot.prcomp`.
 
-What does the PCA plot tell us?
+```{r solutionChallenge1}
+
+```
+
+> ### Discussion: What do the PCA plots tell us about our samples?
 
 <!-- amount and source of variation, sample swap, interaction -->
 
