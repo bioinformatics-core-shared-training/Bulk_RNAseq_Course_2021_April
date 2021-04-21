@@ -3,11 +3,11 @@ title: "Introduction to Bulk RNAseq data analysis"
 subtitle: Initial exploration of RNA-seq data - solutions
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
+  pdf_document:
+    toc: yes
   html_document:
     toc: yes
     toc_float: yes
-  pdf_document:
-    toc: yes
 layout: page
 ---
 
@@ -91,8 +91,8 @@ abline(h=median(as.matrix(rlogcounts)), col="blue")
 >
 > 1. Redraw the plot, but this time plot the 2nd principle component on the 
 > x-axis and the 3rd prinicple component on the y axis. To find out how to do
-> the consult the help page for the `prcomp` data method for `autoplot`: 
-> `autoplot.prcomp`.
+> the consult the help page for the `prcomp` data method for the `autoplot`
+> function: `?autoplot.prcomp`.
 
 ```{r solutionExercise3}
 autoplot(pcDat,

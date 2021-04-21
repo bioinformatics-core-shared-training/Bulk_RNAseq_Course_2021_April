@@ -154,7 +154,9 @@ If you are familiar with R but not `dplyr` or `tidyverse` then we have a very
 brief introduction [here](../extended_html/02a_A_brief_intro_to_dplyr.html). A more detailed 
 introduction can be found in our [online R course](https://bioinformatics-core-shared-training.github.io/r-intro/week4.html)
 
-# Create a raw counts matrix for data exploration
+# Prepare count matrix
+
+## Create a raw counts matrix for data exploration
 
 DESeq2 will use the txi object directly but we will need a counts matrix to
 do the data exploration.
@@ -163,7 +165,7 @@ do the data exploration.
 rawCounts <- round(txi$counts, 0) 
 ```
 
-# Filtering the genes
+## Filtering the genes
 
 <!-- prefiltering -->
 
@@ -198,12 +200,12 @@ filtCounts <- rawCounts[keep,]
 dim(filtCounts)
 ```
 
-## Data transformations and visualization
+# Count distribution and Data transformations
 
 Differential expression calculations with DESeq2 uses raw read counts as input,
 but for visualization purposes we use transformed counts.
 
-### Raw counts 
+## Raw counts 
 
 Why not raw counts? Two issues:
 
@@ -228,7 +230,7 @@ plot(rowMeans(filtCounts), rowSds(filtCounts),
      ylim=c(0,5000))
 ```
 
-### Data transformation
+## Data transformation
 
 To avoid problems posed by raw counts, they can be [transformed](http://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#data-transformations-and-visualization).
 Several transformation methods exist to limit the dependence of variance on mean gene expression:
@@ -237,7 +239,7 @@ Several transformation methods exist to limit the dependence of variance on mean
 * VST : variance stabilizing transformation
 * rlog : regularized log transformation
 
-#### log2 transformation
+### log2 transformation
 
 Because some genes are not expressed (detected) in some samples, their count are `0`. As log2(0) returns -Inf in R which triggers errors by some functions, we add 1 to every count value to create 'pseudocounts'. The lowest value then is 1, or 0 on the log2 scale (log2(1) = 0).
 
@@ -279,7 +281,7 @@ plot(rowMeans(logcounts), rowSds(logcounts),
 
 In contrast to raw counts, with log2 transformed counts lowly expressed genes show higher variation.
 
-#### VST : variance stabilizing transformation
+### VST : variance stabilizing transformation
 
 Variance stabilizing transformation (VST) aims at generating a matrix of values for which variance is constant across the range of mean values, especially for low mean.
 
@@ -316,7 +318,7 @@ plot(rowMeans(vst_counts), rowSds(vst_counts),
 ```
 
 
-## Principal Component Analysis
+# Principal Component Analysis
 
 A principal component analysis (PCA) is an example of an unsupervised analysis,
 where we don't specify the grouping of the samples. If the experiment is well
@@ -373,8 +375,8 @@ autoplot(pcDat,
 >
 > 1. Redraw the plot, but this time plot the 2nd principle component on the 
 > x-axis and the 3rd prinicple component on the y axis. To find out how to do
-> the consult the help page for the `prcomp` data method for `autoplot`: 
-> `autoplot.prcomp`.
+> the consult the help page for the `prcomp` data method for the `autoplot`
+> function: `?autoplot.prcomp`.
 
 ```{r solutionChallenge1}
 
