@@ -131,7 +131,7 @@ Pre-processing](Markdowns/07_Data_Exploration.html) ([pdf](Markdowns/07_Data_Exp
 
 12:15 - 13:15 Lunch
 
-13:15 - 15:45 [Statistical Analysis of Bulk RNAseq Data](Markdowns/StatsRNAseq_Couturier.pdf) - Dominique-Laurent  
+13:15 - 15:45 Statistical Analysis of Bulk RNAseq Data - Dominique-Laurent  
 Couturier        
     - [Practical (html)](Markdowns/StatsRNAseq_Couturier.html) [(rmd)](Markdowns/StatsRNAseq_Couturier.Rmd)  
 
