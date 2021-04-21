@@ -317,12 +317,12 @@ div.tocify {
 
 <h1 class="title toc-ignore">Statistical analysis of RNAseq data</h1>
 <h4 class="author">D.-L. Couturier and O. Rueda</h4>
-<h4 class="date">Last modified: 23 Mar 2021</h4>
+<h4 class="date">Last modified: 21 Apr 2021</h4>
 
 </div>
 
 
-<!--- rmarkdown::render("/Volumes/Files/courses/cruk/RNAseqWithR/202103/tex/sc/StatsRNAseq_Couturier+.Rmd") --->
+<!--- rmarkdown::render("/Volumes/Files/courses/cruk/RNAseqWithR/202104/git/Markdowns/StatsRNAseq_Couturier+.Rmd") --->
 <!--- rmarkdown::render("~/courses/cruk/RNAseqWithR/202103/tex/sc/StatsRNAseq_Couturier+.Rmd") --->
 <div id="section-1-contrast-matrices" class="section level1">
 <h1>Section 1: Contrast matrices</h1>
@@ -522,8 +522,7 @@ X2</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># model with intercept and self-defined levels</span>
 inf<span class="op">$</span>Status3 =<span class="st"> </span><span class="kw">factor</span>(inf<span class="op">$</span>Status3,<span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Uninfected&quot;</span>,<span class="st">&quot;Half-infected&quot;</span>,<span class="st">&quot;Infected&quot;</span>))
 inf<span class="op">$</span>Status3</code></pre></div>
-<pre><code>##  [1] Half-infected Half-infected Infected      Infected      Uninfected    Infected      Uninfected    Uninfected    Uninfected    Half-infected Infected     
-## [12] Half-infected
+<pre><code>##  [1] Half-infected Half-infected Infected      Infected      Uninfected    Infected      Uninfected    Uninfected    Uninfected    Half-infected Infected      Half-infected
 ## Levels: Uninfected Half-infected Infected</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X3 =<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span><span class="st"> </span>Status3, <span class="dt">data =</span> inf)
 X3</code></pre></div>
@@ -689,6 +688,40 @@ cond &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="k
 dds &lt;-<span class="st"> </span><span class="kw">DESeqDataSetFromMatrix</span>(cnts, <span class="kw">DataFrame</span>(cond), <span class="op">~</span><span class="st"> </span>cond)
 dds &lt;-<span class="st"> </span><span class="kw">DESeq</span>(dds)
 <span class="kw">results</span>(dds)</code></pre></div>
+<pre><code>## log2 fold change (MLE): cond 2 vs 1 
+## Wald test p-value: cond 2 vs 1 
+## DataFrame with 1000 rows and 6 columns
+##       baseMean log2FoldChange     lfcSE      stat    pvalue      padj
+##      &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+## 1      97.3140      -0.682067  0.344525 -1.979730 0.0477339  0.745842
+## 2     109.9860      -0.228819  0.450720 -0.507676 0.6116808  0.944354
+## 3      98.8111       0.104291  0.462113  0.225683 0.8214483  0.978382
+## 4     103.2615       0.306400  0.297682  1.029284 0.3033460  0.944354
+## 5      97.9406       0.316338  0.357242  0.885501 0.3758864  0.944354
+## ...        ...            ...       ...       ...       ...       ...
+## 996    86.8057      0.0467703  0.287042  0.162939 0.8705668  0.980044
+## 997   101.4437     -0.2070806  0.339886 -0.609264 0.5423495  0.944354
+## 998    78.1356     -0.6372790  0.369515 -1.724637 0.0845930  0.824310
+## 999    89.2920      0.7554725  0.306192  2.467314 0.0136131  0.614613
+## 1000  103.5569     -0.0728875  0.348655 -0.209053 0.8344065  0.978382</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">results</span>(dds,<span class="dt">name=</span><span class="st">&quot;Intercept&quot;</span>)</code></pre></div>
+<pre><code>## log2 fold change (MLE): Intercept 
+## Wald test p-value: Intercept 
+## DataFrame with 1000 rows and 6 columns
+##       baseMean log2FoldChange     lfcSE      stat       pvalue         padj
+##      &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;    &lt;numeric&gt;    &lt;numeric&gt;
+## 1      97.3140        6.90565  0.242562   28.4697 2.78073e-178 4.84448e-178
+## 2     109.9860        6.89102  0.318468   21.6381 7.87448e-104 8.03519e-104
+## 3      98.8111        6.57355  0.326862   20.1111  5.90379e-90  5.93346e-90
+## 4     103.2615        6.52875  0.210965   30.9472 2.77420e-210 9.94335e-210
+## 5      97.9406        6.44716  0.253037   25.4792 3.35581e-143 3.84399e-143
+## ...        ...            ...       ...       ...          ...          ...
+## 996    86.8057        6.41605  0.203037   31.6003 3.65281e-219 1.63803e-218
+## 997   101.4437        6.76442  0.240023   28.1823 9.62980e-175 1.58125e-174
+## 998    78.1356        6.57184  0.260146   25.2621 8.34043e-141 9.41358e-141
+## 999    89.2920        6.05380  0.217898   27.7827 7.02445e-170 1.06593e-169
+## 1000  103.5569        6.73029  0.246421   27.3122 3.03850e-164 4.29167e-164</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">results</span>(dds,<span class="dt">name=</span><span class="st">&quot;cond_2_vs_1&quot;</span>)</code></pre></div>
 <pre><code>## log2 fold change (MLE): cond 2 vs 1 
 ## Wald test p-value: cond 2 vs 1 
 ## DataFrame with 1000 rows and 6 columns
