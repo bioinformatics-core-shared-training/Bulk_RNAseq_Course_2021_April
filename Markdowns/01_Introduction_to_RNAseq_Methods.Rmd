@@ -1,13 +1,13 @@
 ---
 title: "Introduction to RNAseq Methods"
-date: "March 2021"
+date: "April 2021"
 output:
-  beamer_presentation: default
   ioslides_presentation:
     css: css/stylesheet.css
     logo: images/CRUK_Cambridge_Institute.png
     smaller: yes
     widescreen: yes
+  beamer_presentation: default
   slidy_presentation: default
 ---
 ## HTS Applications - Overview
@@ -120,27 +120,24 @@ output:
 </div>
 
 
-<!---
+
+<!-- ## Designing the right experiment -->
+
+<!-- <img src="images/Experimental_Design-C_Ambrosino.jpg" class="centerimg" style="width: 90%"> -->
+
+<!-- <div style="text-align: right"> -->
+<!-- <p style="font-size: 14px">Comic by Christine Ambrosino http://www.hawaii.edu/fishlab/Nearside.htm</p> -->
+<!-- </div> -->
+
 ## Designing the right experiment
 
-<img src="images/Experimental_Design-C_Ambrosino.jpg" class="centerimg" style="width: 90%">
+<!-- ### Key aspects of experimental design: -->
 
-<div style="text-align: right">
-<p style="font-size: 14px">Comic by Christine Ambrosino http://www.hawaii.edu/fishlab/Nearside.htm</p>
-</div>
+<!-- * Experimental variables -->
 
----> 
+<!-- * Power: variance and replicates -->
 
-<!---
-## Designing the right experiment
-
-### Key aspects of experimental design:
-
-* Experimental variables
-
-* Power: variance and replicates
-
-* Bias: confounding factors, randomisation, controls
+<!-- * Bias: confounding factors, randomisation, controls -->
 
 ### A good experiment should:
 
@@ -151,21 +148,24 @@ output:
 * Be amenable to statisical analysis
 
 * Be reproducible
--->
+
+* More on experimental design later
+
 
 ## Designing the right experiment
 
 ### Practical considerations for RNAseq
 
-* Coverage
+* Coverage: how many reads? 
 
-* Read length
+* Read length & structure: Long or short reads? Paired or Single end?  
 
-* Library preparation method
+* Controlling for batch effects
 
-## Designing the right experiment
+* Library preparation method: Poly-A, Ribominus, other? 
 
-### Coverage: How many reads do we need?
+## Designing the right experiment - How many reads do we need?
+
 
 <div style="line-height: 50%;"><br></div>
 The coverage is defined as:
@@ -186,9 +186,9 @@ the experiment and the nature of the RNA sample.
 * Targeted RNA expression requires fewer reads. 
 * miRNA-Seq or Small RNA Analysis require even fewer reads.
 
-## Designing the right experiment
+## Designing the right experiment - Read length
 
-### Read length: long or short reads? Paired or Single end?
+### Long or short reads? Paired or Single end?
 
 The answer depends on the experiment:
 
@@ -196,6 +196,221 @@ The answer depends on the experiment:
 * kmer-based quantification of Gene Expression (Salmon etc.) - benefits from PE.
 * Transcriptome Analysis – longer paired-end reads (such as 2 x 75 bp).
 * Small RNA Analysis – short single read, e.f. SE50 - will need trimming.
+
+
+
+
+## Designing the right experiment - Replication
+
+### Biological Replication
+
+* Measures the biological variations between individuals
+
+* Accounts for sampling bias
+
+### Technical Replication
+
+* Measures the variation in response quantification due to imprecision in the
+technique
+
+* Accounts for technical noise
+
+
+## Designing the right experiment - Replication
+
+### Biological Replication
+
+<div style="width: 45%;
+            float: left;">
+Each replicate is from an indepent biological individual
+
+* *In Vivo*:
+
+    * Patients
+    * Mice
+    
+* *In Vitro*:
+
+    * Different cell lines
+    * Different passages
+    
+</div>
+
+<div style="width: 45%;
+            float: right;">
+<img src="images/BioRep.jpg" class="centerimg" style="width: 95%">
+</div>
+
+## Designing the right experiment - Replication
+
+### Technical Replication
+
+<div style="width: 45%;
+            float: left;">
+Replicates are from the same individual but processed separately
+
+* Experimental protocol
+* Measurement platform
+</div>
+
+<div style="width: 45%;
+            float: right;">
+<img src="images/TechRep.jpg" class="centerimg" style="width: 55%">
+</div>
+
+## Designing the right experiment - Batch effects 
+
+<img src="images/batch_effect_1.png" class="centerimg" style="width: 100%">
+
+## Designing the right experiment - Batch effects 
+
+<img src="images/batch_effect_2.png" class="centerimg" style="width: 100%">
+
+## Designing the right experiment - Batch effects 
+
+<img src="images/batch_effect_3.png" class="centerimg" style="width: 100%">
+
+
+## Designing the right experiment - Batch effects 
+
+* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
+
+* Batch effects are problematic if they are confounded with the experimental variable.
+
+* Batch effects that are randomly distributed across experimental variables can be controlled for.
+
+<!-- ## Designing the right experiment - Batch effects  -->
+
+<!-- <img src="images/BatchEffecta.svg" class="centerimg" style="width: 95%"> -->
+
+<!-- ## Designing the right experiment - Batch effects  -->
+
+<!-- <img src="images/BatchEffectb.svg" class="centerimg" style="width: 95%"> -->
+
+## Designing the right experiment - Batch effects 
+
+* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
+
+* Batch effects are problematic if they are confounded with the experimental variable.
+
+* Batch effects that are randomly distributed across experimental variables can be controlled for.
+
+* Randomise all technical steps in data generation in order to avoid batch effects
+
+## Designing the right experiment - Batch effects 
+
+* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
+
+* Batch effects are problematic if they are confounded with the experimental variable.
+
+* Batch effects that are randomly distributed across experimental variables can be controlled for.
+
+* Randomise all technical steps in data generation in order to avoid batch effects
+
+<img src="images/PlateEmpty.svg" class="centerimg" style="width: 40%">
+
+## Designing the right experiment - Batch effects 
+
+* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
+
+* Batch effects are problematic if they are confounded with the experimental variable.
+
+* Batch effects that are randomly distributed across experimental variables can be controlled for.
+
+* Randomise all technical steps in data generation in order to avoid batch effects
+
+<img src="images/PlateBad.svg" class="centerimg" style="width: 40%">
+
+## Designing the right experiment - Batch effects 
+
+* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
+
+* Batch effects are problematic if they are confounded with the experimental variable.
+
+* Batch effects that are randomly distributed across experimental variables can be controlled for.
+
+* Randomise all technical steps in data generation in order to avoid batch effects
+
+<img src="images/PlateGood.svg" class="centerimg" style="width: 40%">
+
+## Designing the right experiment - Batch effects 
+
+* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
+
+* Batch effects are problematic if they are confounded with the experimental variable.
+
+* Batch effects that are randomly distributed across experimental variables can be controlled for.
+
+* Randomise all technical steps in data generation in order to avoid batch effects
+
+<img src="images/ed_bad.png" class="centerimg" style="width: 70%">
+
+## Designing the right experiment - Batch effects 
+
+* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
+
+* Batch effects are problematic if they are confounded with the experimental variable.
+
+* Batch effects that are randomly distributed across experimental variables can be controlled for.
+
+* Randomise all technical steps in data generation in order to avoid batch effects
+
+<img src="images/ed_good.png" class="centerimg" style="width: 70%">
+
+
+## Designing the right experiment - Batch effects 
+
+### Multiplexing
+
+<img src="images/multiplexing.jpg" class="centerimg" style="width: 65%">
+
+
+
+
+## Designing the right experiment - Hidden Confounding variables
+
+
+* Think deeply about the samples you are collecting
+
+* This will be covered in more detail tomorrow
+
+* Age, sex, litter, cell passage .. 
+
+* Record everything 
+
+## RNAseq Workflow
+
+
+<div style="width: 40%; 
+            float: left"> 
+
+            
+<div class="wkfthree2">
+<span style="color: #2e2892;">**Experimental Design**</span>
+</div>
+
+<div class="wkfthree2">
+<span style="color: #8b0000;">**Library Preparation**</span>
+</div>
+
+<div class="wkfthree2">
+<span style="color: #2e2892;">**Sequencing**</span>
+</div>
+
+<div class="wkfthree2">
+<span style="color: #2e2892;">**Bioinformatics Analysis**</span>
+</div>
+</div>
+
+<div style="margin-left: 60px;
+            float: none;">  
+            
+<img src="images/RNAseq_WorkFlow.png" style="width: 48%; margin-left: auto; margin-right: auto; display: block;">
+</div>
+
+<div style="text-align: right">
+<p style="font-size: 14px">Image adapted from: Wang, Z., et al. (2009), Nature Reviews Genetics, 10, 57–63.</p>
+</div>
 
 ## Library preparation
 
@@ -270,146 +485,6 @@ Poly-A transcripts + Other mRNAs e.g.:
 </div>
 </div>
 
-
-## Capturing Variance - Replication
-
-### Biological Replication
-
-* Measures the biological variations between individuals
-
-* Accounts for sampling bias
-
-### Technical Replication
-
-* Measures the variation in response quantification due to imprecision in the
-technique
-
-* Accounts for technical noise
-
-
-## Capturing Variance - Replication
-
-### Biological Replication
-
-<div style="width: 45%;
-            float: left;">
-Each replicate is from an indepent biological individual
-
-* *In Vivo*:
-
-    * Patients
-    * Mice
-    
-* *In Vitro*:
-
-    * Different cell lines
-    * Different passages
-    
-</div>
-
-<div style="width: 45%;
-            float: right;">
-<img src="images/BioRep.jpg" class="centerimg" style="width: 95%">
-</div>
-
-## Capturing Variance - Replication
-
-### Technical Replication
-
-<div style="width: 45%;
-            float: left;">
-Replicates are from the same individual but processed separately
-
-* Experimental protocol
-* Measurement platform
-</div>
-
-<div style="width: 45%;
-            float: right;">
-<img src="images/TechRep.jpg" class="centerimg" style="width: 55%">
-</div>
-
-## Controlling batch effects
-
-* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
-
-* Batch effects are problematic if they are confounded with the experimental variable.
-
-* Batch effects that are randomly distributed across experimental variables can be controlled for.
-
-## Controlling batch effects
-
-<img src="images/BatchEffecta.svg" class="centerimg" style="width: 95%">
-
-## Controlling batch effects
-
-<img src="images/BatchEffectb.svg" class="centerimg" style="width: 95%">
-
-## Controlling batch effects
-
-* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
-
-* Batch effects are problematic if they are confounded with the experimental variable.
-
-* Batch effects that are randomly distributed across experimental variables can be controlled for.
-
-* Randomise all technical steps in data generation in order to avoid batch effects
-
-## Controlling batch effects
-
-* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
-
-* Batch effects are problematic if they are confounded with the experimental variable.
-
-* Batch effects that are randomly distributed across experimental variables can be controlled for.
-
-* Randomise all technical steps in data generation in order to avoid batch effects
-
-<img src="images/PlateEmpty.svg" class="centerimg" style="width: 40%">
-
-## Controlling batch effects
-
-* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
-
-* Batch effects are problematic if they are confounded with the experimental variable.
-
-* Batch effects that are randomly distributed across experimental variables can be controlled for.
-
-* Randomise all technical steps in data generation in order to avoid batch effects
-
-<img src="images/PlateBad.svg" class="centerimg" style="width: 40%">
-
-## Controlling batch effects
-
-* Batch effects are sub-groups of measurements that have qualitatively different behavior across conditions and are unrelated to the biological or scientific variables in a study.
-
-* Batch effects are problematic if they are confounded with the experimental variable.
-
-* Batch effects that are randomly distributed across experimental variables can be controlled for.
-
-* Randomise all technical steps in data generation in order to avoid batch effects
-
-<img src="images/PlateGood.svg" class="centerimg" style="width: 40%">
-
-## Controlling batch effects
-
-### Multiplexing
-
-<img src="images/multiplexing.jpg" class="centerimg" style="width: 65%">
-
-
-
-
-## Hidden Confounding variables
-
-
-* Think deeply about the samples you are collecting
-
-* This will be covered in more detail tomorrow
-
-
-
-
 ## Library preparation
 
 <img src="images/IlluminaLibraryPrep1.png" class="centerimg" style="width: 85%">
@@ -418,16 +493,158 @@ Replicates are from the same individual but processed separately
 
 <img src="images/IlluminaLibraryPrep2.png" class="centerimg" style="width: 85%">
 
-## Digitising Oligonucleotides
-
-<img src="images/sequencing.png" class="centerimg" style="width: 100%">
-
-<img src="images/sequencing2.png" class="centerimg" style="width: 100%">
+## RNAseq Workflow
 
 
-## Differential Gene Expression Analysis Workflow {#less_space_after_title}
+<div style="width: 40%; 
+            float: left"> 
 
-<div style="line-height: 50%;"><br></div>
+            
+<div class="wkfthree2">
+<span style="color: #2e2892;">**Experimental Design**</span>
+</div>
 
-<img src="images/workflow_3Day.svg" class="centerimg" style="width: 80%; margin-top: 60px;">
-<!-- <img src="images/workflow.svg" class="centerimg" style="width: 60%;"> -->
+<div class="wkfthree2">
+<span style="color: #2e2892;">**Library Preparation**</span>
+</div>
+
+<div class="wkfthree2">
+<span style="color: #8b0000;">**Sequencing**</span>
+</div>
+
+<div class="wkfthree2">
+<span style="color: #2e2892;">**Bioinformatics Analysis**</span>
+</div>
+</div>
+
+<div style="margin-left: 60px;
+            float: none;">  
+            
+<img src="images/RNAseq_WorkFlow.png" style="width: 48%; margin-left: auto; margin-right: auto; display: block;">
+</div>
+
+<div style="text-align: right">
+<p style="font-size: 14px">Image adapted from: Wang, Z., et al. (2009), Nature Reviews Genetics, 10, 57–63.</p>
+</div>
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.001.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.002.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.003.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.004.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.005.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.006.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.007.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.008.png" class="centerimg" style="width: 100%">
+
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.009.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.010.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.011.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.012.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.013.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.014.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.015.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.016.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.017.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.018.png" class="centerimg" style="width: 100%">
+
+## Sequencing by synthesis 
+
+<img src="images/Illumina_SBS.019.png" class="centerimg" style="width: 100%">
+
+## RNAseq Workflow
+
+
+<div style="width: 40%; 
+            float: left"> 
+
+            
+<div class="wkfthree2">
+<span style="color: #2e2892;">**Experimental Design**</span>
+</div>
+
+<div class="wkfthree2">
+<span style="color: #2e2892;">**Library Preparation**</span>
+</div>
+
+<div class="wkfthree2">
+<span style="color: #2e2892;">**Sequencing**</span>
+</div>
+
+<div class="wkfthree2">
+<span style="color: #8b0000;">**Bioinformatics Analysis**</span>
+</div>
+</div>
+
+<div style="margin-left: 60px;
+            float: none;">  
+            
+<img src="images/RNAseq_WorkFlow.png" style="width: 48%; margin-left: auto; margin-right: auto; display: block;">
+</div>
+
+<div style="text-align: right">
+<p style="font-size: 14px">Image adapted from: Wang, Z., et al. (2009), Nature Reviews Genetics, 10, 57–63.</p>
+</div>
+
+## Case Study 
+
+<img src="images/case_study.png" class="centerimg" style="width: 100%">
+
+<!-- ## Differential Gene Expression Analysis Workflow {#less_space_after_title} -->
+
+<!-- <div style="line-height: 50%;"><br></div> -->
+
+<!-- <img src="images/workflow_3Day.svg" class="centerimg" style="width: 80%; margin-top: 60px;"> -->
+<!-- <!-- <img src="images/workflow.svg" class="centerimg" style="width: 60%;"> --> -->
