@@ -127,7 +127,8 @@ R](Markdowns/06_Introduction_to_RNAseq_Analysis_in_R.html) - Ashley Sawle
 
 10:15 - 12:15 - [RNA-seq 
 Pre-processing](Markdowns/07_Data_Exploration.html) ([pdf](Markdowns/07_Data_Exploration.pdf)) - Ashley Sawle   
-    <!-- - [Practical solutions](Markdowns/07_Data_Exploration.Solutions.html) ([pdf](Markdowns/07_Data_Exploration.Solutions.pdf))  -->
+    - [Practical solutions](Markdowns/07_Data_Exploration.Solutions.html) ([pdf](Markdowns/07_Data_Exploration.Solutions.pdf))
+    - [Ashley's Live Script](live_scripts/Session_1_Data_Exploration.R)
 
 12:15 - 13:15 Lunch
 
