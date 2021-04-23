@@ -66,20 +66,14 @@ Let's start with an experiment with:
 
 ```{r}
 contingencyTable <- data.frame(
-  diffExpNo=c(1980, 17920),
-  diffExpYes=c(20, 80))
-row.names(contingencyTable) <- c("pathwayYes", "pathwayNo")
-
+  NoDiffExp=c(17920, 1980),
+  YesDiffExp=c(80, 20))
+row.names(contingencyTable) <- c("NoPathway", "YesPathway")
 rowSums(contingencyTable)
 colSums(contingencyTable)
 
 contingencyTable
 ```
-
-<!--
-Draws == DEGs
-Success == in pathway
--->
 
 Let's define variables for the analysis of a given pathway:
 
@@ -90,7 +84,7 @@ in our example.
 2,000 in our example
 * **n**: number of differentially expressed genes - 100 in our example
 * **k**: number of differentially expressed genes that are annotated to the pathway 
-- 20 in our example
+  * 20 in our example
 
 Significance can then be assessed with the hypergeometric distribution:
 
@@ -221,6 +215,7 @@ pathview(gene.data = logFC,
 >
 > `clusterProfiler` can also perform over-representation analysis on GO terms 
 using the command `enrichGO`. Check:
+>
 > * the help page for the command `enrichGO` (type `?enrichGO` at the console prompt)
 > * and the instructions in the
 > [clusterProfiler book](http://yulab-smu.top/clusterProfiler-book/chapter5.html#go-over-representation-test).
