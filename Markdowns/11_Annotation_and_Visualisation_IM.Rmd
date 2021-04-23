@@ -192,7 +192,9 @@ length(unique(annot$ENSEMBL))
 length(ourKeys)
 ```
 
-In this case the problems with the annotation may be due to the versions as our snapshot was made 27-04-2020 which is the same date as version 101 (we used version 102 for counting reads in Day 1) was released. It is good to keep an eye on these things so you don't miss releases.
+In this case the problems with the annotation aren't due to the versions as our snapshot was made 27-10-2020 which is the same date as version 102 (we used version 102 for counting reads in Day 1) was released. It is good to keep an eye on these things so you don't miss releases.
+
+The is another set of databases within `AnnotationHub` which you can call instead called `EnsDb` and for these you can specify which release you prefer if so some reason you were not using the latest version.
 
 ## A curated annotation - one we prepared earlier
 
