@@ -65,13 +65,17 @@ Let's start with an experiment with:
   * including 20 of the 100 differentially expressed genes.
 
 ```{r}
+# make contingency table
 contingencyTable <- data.frame(
   NoDiffExp=c(17920, 1980),
   YesDiffExp=c(80, 20))
 row.names(contingencyTable) <- c("NoPathway", "YesPathway")
+
+# check margin sums:
 rowSums(contingencyTable)
 colSums(contingencyTable)
 
+# show table
 contingencyTable
 ```
 
@@ -342,7 +346,7 @@ gseaRes %>%
   data.frame() %>%
   remove_rownames() %>%
   # format
-  mutate(enrichmentScore=formatC(NES, digits = 3)) %>%
+  mutate(ES=formatC(enrichmentScore, digits = 3)) %>%
   mutate(NES=formatC(NES, digits = 3)) %>%
   # format p-values
   modify_at(
