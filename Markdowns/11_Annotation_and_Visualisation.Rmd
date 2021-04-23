@@ -10,8 +10,9 @@ output:
 bibliography: ref.bib
 ---
 
-```{r setup, message=FALSE}
-library(EnsDb.Mmusculus.v79)
+```{r setup, message=FALSE, warning=F}
+library(AnnotationHub)
+library(AnnotationDbi)
 library(DESeq2)
 library(tidyverse)
 ```
@@ -42,17 +43,35 @@ periodically with the latest annotations. These packages are listed on the
 of the Bioconductor, and are installed in the same way as regular Bioconductor 
 packages. 
 
-An alternative approach is to use `biomaRt`, an interface to the 
+An another approach is to use `biomaRt`, an interface to the 
 [BioMart](http://www.biomart.org/) resource. Using BioMart ensures that you are 
 able to get the latest annotations for the GeneIDs, and can match the version of
 the gene annotation that was used for read counting.
 
-Using an annotation packages means that you may not have the exact same version
-of the gene annotations as was used to do the counting. 
+A third method is to use `AnnotationHub`, this is like the bioconductor packages but in an online database like `bioMaRt`. They keep them slightly more up to date than the standard bioconductor packages and each time you use them the results are cached on your machine. 
 
-Today we will use the annotation package method. A workflow for annotation with biomaRt is included in the extended materials section acessible on the course website.
+Today we will use the `AnnotationHub` method. A workflow for annotation with biomaRt is included in the extended materials section acessible on the course website.
 
 ## Query the database
+
+First we need to get the correct database from `AnnotationHub`. We make the instance (the first time we do this it will create a local cache on your machine so that repeat queries are very quick). 
+
+As you can see `ah` contains huge amounts of information and it is constantly changing. This is why it gives us the snapshot date so we know when our cached version is from. The `ah` object actually online contains pointers to where all the information is online and we don't want to download all of them as it would take a very long time and we don't need all of it.
+
+This object is a vector and you can get information about a single resource by indexing with a single bracket `[` or download a resource with a double bracket `[[`.
+
+```{r, makeOrgDb, message=F}
+
+# create an annotationhub instance
+ah <- AnnotationHub()
+ah
+
+ah[1]
+
+# Download the database we want to use
+OrgDb <- query(ah, c("OrgDb", "Mus musculus"))[[1]]
+
+```
 
 We use the select function to query the database. Now we need to set up a query.
 This requires us to tell it what we want and what we have. For this we need to 
@@ -67,20 +86,20 @@ results table
 
 ```{r queryOrgDb, message=F}
 # what can we search for? 'columns'
-columns(EnsDb.Mmusculus.v79)
+columns(OrgDb)
 
 # what can we search with? 'keytypes'
-keytypes(EnsDb.Mmusculus.v79)
+keytypes(OrgDb)
 
 # lets set it up
-ourCols <- c("SYMBOL", "GENEID", "ENTREZID")
+ourCols <- c("SYMBOL", "ENSEMBL", "ENTREZID")
 ourKeys <- rownames(results.interaction.11)[1:1000]
 
 # run the query
-annot <- AnnotationDbi::select(EnsDb.Mmusculus.v79, 
+annot <- AnnotationDbi::select(OrgDb, 
                 keys=ourKeys, 
                 columns=ourCols, 
-                keytype="GENEID")
+                keytype="ENSEMBL")
 ```
 
 
@@ -97,12 +116,12 @@ dim(annot) # why are there more than 1000 rows?
 
 # find all rows containing duplicated ensembl ids
 annot %>%  
-    add_count(GENEID) %>%  
+    add_count(ENSEMBL) %>%  
     dplyr::filter(n>1)
 ```
 
-There are quite a few Ensembl IDs with no EntrezID. These gene ids have no 
-corresponding Entrez ID in the `EnsDb.Mmusculus.v79` database package. The 
+There is one Ensembl IDs with no EntrezID. These gene ids has no 
+corresponding Entrez ID in the `OrgDb` database package. The 
 Ensembl and Entrez databases don't match on a 1:1 level although they have 
 started taking steps towards consolidating
 [in recent years](https://m.ensembl.org/info/genome/genebuild/mane.html).
@@ -136,19 +155,19 @@ In this case it would perhaps makes most sense to discard the Entrez ID
 
 ```{r eval=FALSE}
 # lets set it up
-ourCols <- c("GENEID", "SYMBOL", "ENTREZID")
+ourCols <- c("ENSEMBL", "SYMBOL", "ENTREZID")
 ourKeys <- rownames(results.interaction.11)[1:1000]
 
 # run the query
-annot <- AnnotationDbi::select(EnsDb.Mmusculus.v79, 
+annot <- AnnotationDbi::select(OrgDb, 
                 keys=ourKeys, 
                 columns=ourCols, 
-                keytype="GENEID")
+                keytype="ENSEMBL")
 ```
 
 > (a) Run the same query using all of the genes in our results table (`results.interaction.33`),
-> and this time include the biotype of the genes too. Hint: You can find the 
-> name of the column for this by running `columns(EnsDb.Mmusculus.v79)`
+> and this time include the descriptive name of the genes too. Hint: You can find the 
+> name of the column for this by running `columns(OrgDb)`
 >
 > (b) How many Ensembl genes have multipe Entrez IDs associated with them?
 >
@@ -160,27 +179,27 @@ annot <- AnnotationDbi::select(EnsDb.Mmusculus.v79,
 ourKeys <- rownames(results.interaction.11)
 
 # (b)
-ourCols <- c("SYMBOL", "GENEID", "ENTREZID", "GENEBIOTYPE")
+ourCols <- c("SYMBOL", "ENSEMBL", "ENTREZID", "GENENAME")
 
 # run the query
-annot <- AnnotationDbi::select(EnsDb.Mmusculus.v79, 
+annot <- AnnotationDbi::select(OrgDb, 
                 keys=ourKeys, 
                 columns=ourCols,
-                keytype="GENEID")
+                keytype="ENSEMBL")
 
 # (c)
 annot %>%  
-    add_count(GENEID) %>%  
+    add_count(ENSEMBL) %>%  
     dplyr::filter(n>1) %>% 
-    distinct(GENEID) %>%
+    distinct(ENSEMBL) %>%
     count()
 
 # (d)
-length(unique(annot$GENEID))
+length(unique(annot$ENSEMBL))
 length(ourKeys)
 ```
 
-In this case many of the problems with the annotation are due to the versions. As you will notice the Ens.Db file that we loaded at the begining of this section was version 79. The current version from Ensembl that we used in the previous sections for counting reads was version 102 so there will be a number of differences between them.
+In this case the problems with the annotation may be due to the versions as our snapshot was made 27-04-2020 which is the same date as version 101 (we used version 102 for counting reads in Day 1) was released. It is good to keep an eye on these things so you don't miss releases.
 
 ## A curated annotation - one we prepared earlier
 
