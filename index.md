@@ -145,14 +145,14 @@ Pre-processing](Markdowns/07_Data_Exploration.html) ([pdf](Markdowns/07_Data_Exp
 ### Day 3
 
 9:30 - 12:15 - [Differential Expression for RNA-seq](Markdowns/10_DE_analysis_with_DESeq2.html) ([pdf](Markdowns/10_DE_analysis_with_DESeq2.pdf)) - Chandra Chilamakuri   
-    - [practical solutions](Markdowns/10_DE_analysis_with_DESeq2.Solutions.html) ([pdf](Markdowns/10_DE_analysis_with_DESeq2.Solutions.html))
+    - [practical solutions](Markdowns/10_DE_analysis_with_DESeq2.Solutions.html) ([pdf](Markdowns/10_DE_analysis_with_DESeq2.Solutions.html))  
     - [Chandra's Live Script](live_scripts/deseq2_session_v1.0.R)
  
 12:15 - 13:15 Lunch
 
 13:15 - 15:30 [Annotation and Visualisation of RNA-seq
 results](Markdowns/11_Annotation_and_Visualisation.html) ([pdf](Markdowns/11_Annotation_and_Visualisation.pdf)) - Abbi Edwards    
-    - [practical solutions](Markdowns/11_Annotation_and_Visualisation_Solutions.html) 
+    - [practical solutions](Markdowns/11_Annotation_and_Visualisation_Solutions.html)  
     - [Abbi's Live Script](live_scripts/AandV_liveScript.R)
 
 15:30 - 17:00 [Gene-set testing](Markdowns/12_Gene_set_testing_introduction.html) - Stephane Ballereau    
